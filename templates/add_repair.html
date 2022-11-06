@@ -1,0 +1,46 @@
+{% extends 'index/base.html' %}
+{% block title %}
+    添加提交信息
+{% endblock %}
+{% block add_active %}
+    active
+{% endblock %}
+{% block index %}
+    <form enctype="multipart/form-data" method="post" action="{% url 'add_repair' %}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="rounded col-sm-12 col-lg-6 bg-light mt-4 p-4 mb-5">
+                {% if msg %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label class="form-label">楼号（宿舍号）：</label>
+                    <input required name="flor" type="text" class="form-control">
+                    <div id="emailHelp" class="form-text">公寓楼信息必须填！</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">题目</label>
+                    <input required name="title" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="floatingFile">照片</label>
+                    <input required id="floatingFile" type="file" name="photo" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">内容：</label>
+                    <textarea name="content" required class="form-control" rows="6"></textarea>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary w-25">提交</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+
+{% endblock %}

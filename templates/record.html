@@ -1,0 +1,39 @@
+{% extends 'index/base.html' %}
+{% block title %}
+    提交记录
+{% endblock %}
+{% block record_active %}
+    active
+{% endblock %}
+{% block index %}
+    <main class="container">
+        {% for i in record %}
+            <div class="card mb-3 mt-4" style="max-width: 100%;">
+                <div class="row g-0 bg-light">
+                    <div class="col-md-3">
+                        <img src="/media/{{ i.photo }}" style="height: 200px;width: 100%">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.title }}</h5>
+                            <p class="card-text">内容：{{ i.content }}</p>
+
+                            {% if i.type == 1 %}
+                                <p class="text-dark">状态：已提交</p>
+                            {% elif itype == 2 %}
+                                <p class="text-warning">状态：待审核</p>
+                            {% elif itype == 3 %}
+                                <p class="text-danger">状态：待修复</p>
+                            {% elif itype == 4 %}
+                                <p class="text-primary">状态：已修复</p>
+                            {% endif %}
+
+                            <p class="card-text"><small class="text-muted">{{ i.time }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </main>
+{% endblock %}

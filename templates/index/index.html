@@ -1,0 +1,27 @@
+{% extends 'index/base.html' %}
+{% block title %}
+    学生公寓报修管理系统的设计与实现
+{% endblock %}
+{% block index_active %}
+    active
+{% endblock %}
+{% block index %}
+
+    <div class="row m-0">
+        <div class="col-12">
+
+            {% for i in notice %}
+                <div class="rounded p-5 bg-light">
+                    <h2>{{ i.title }}</h2>
+                    <p class="lead">{{ i.content }}</p>
+                </div>
+            {% empty %}
+                <div class="mt-5 p-5 bg-light text-center">
+                    <h4>暂无通知……</h4>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+{% endblock %}
