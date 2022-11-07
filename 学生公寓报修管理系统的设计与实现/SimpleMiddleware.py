@@ -16,8 +16,8 @@ class SimpleMiddleware:
             1.判断是否登录
         """
         # 允许后台不登录情况下访问的路径
-        urllist = ['/', '/logout/', '/login/', '/register/', '/admin/', '/admin/login/']
-        if path not in urllist:
+        urllist = ['/', '/logout/', '/login/', '/register/']
+        if path not in urllist or '/admin/' not in path:
             # 重定向到登录页
             if 'name' not in request.session:
                 return redirect(reverse("login"))
