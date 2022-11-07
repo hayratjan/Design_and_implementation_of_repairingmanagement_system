@@ -141,11 +141,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SIMPLEUI_CONFIG = {
     'system_keep': True,
-    'menu_display': ['保修单管理', '通知管理', '用户管理', '管理员列表'],
+    'menu_display': ['保修单管理', '通知管理', '用户列表', '管理员列表'],
     'dynamic': True,
     'menus': [{
         'name': '保修单管理',
-        'url': '/admin/login/repair/'
+        'url': '/admin/index/repair/'
     }, {
         'name': '通知管理',
         'url': '/admin/index/notice/'
