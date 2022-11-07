@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    '学生公寓报修管理系统的设计与实现.SimpleMiddleware.SimpleMiddleware'  # 登录过滤
 ]
 
 ROOT_URLCONF = '学生公寓报修管理系统的设计与实现.urls'
