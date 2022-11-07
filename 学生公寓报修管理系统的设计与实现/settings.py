@@ -145,16 +145,12 @@ SIMPLEUI_CONFIG = {
     'dynamic': True,
     'menus': [{
         'name': '保修单管理',
-        'models': [{
-            'name': '保修单列表',
-            'url': '/admin/login/text/'
-        }]
+        'url': '/admin/login/text/'
+
     }, {
         'name': '通知管理',
-        'models': [{
-            'name': '通知列表',
-            'url': '/admin/index/notice/'
-        }]
+        'url': '/admin/index/notice/'
+
     },
         {
             'name': '用户管理',
