@@ -141,31 +141,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SIMPLEUI_CONFIG = {
     'system_keep': True,
-    'menu_display': ['保修单管理', '通知管理', '用户管理'],
+    'menu_display': ['保修单管理', '通知管理', '用户管理', '管理员列表'],
     'dynamic': True,
     'menus': [{
         'name': '保修单管理',
-        'url': '/admin/login/text/'
-
+        'url': '/admin/login/repair/'
     }, {
         'name': '通知管理',
         'url': '/admin/index/notice/'
 
     },
         {
-            'name': '用户管理',
-            'icon': 'fas fa-user-shield',
-            'models': [
-                {
-                    'name': '用户列表',
-                    'url': '/admin/index/user/'
-                },
-                {
-                    'name': '管理员列表',
-                    'icon': 'fa fa-user',
-                    'url': 'auth/user/'
-                }]
-        }]
+            'name': '用户列表',
+            'url': '/admin/index/user/'
+        }, {
+            'name': '管理员列表',
+            'url': 'auth/user/'
+        }
+    ]
 }
 # 隐藏右侧SimpleUI广告链接和使用分析
 SIMPLEUI_HOME_INFO = False
