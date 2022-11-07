@@ -139,55 +139,42 @@ MEDIA_ROOT = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SIMPLEUI_CONFIG = {
-#     'system_keep': True,
-#     'menu_display': ['用户管理', '报修管理'],
-#     'dynamic': True,
-#     'menus': [{
-#         'name': '自习室管理',
-#         'models': [{
-#             'name': '自习室列表',
-#             'url': '/admin/login/rooms/'
-#         }
-#         ]
-#     }, {
-#         'name': '预约管理',
-#         'models': [{
-#             'name': '预约列表',
-#             'url': '/admin/login/bookings/'
-#         }]
-#     }, {
-#         'name': '提示管理',
-#         'models': [{
-#             'name': '提示列表',
-#             'url': '/admin/login/text/'
-#         }]
-#     }, {
-#         'name': '警告记录',
-#         'models': [{
-#             'name': '警告列表',
-#             'url': '/admin/login/integrals/'
-#         }]
-#     },
-#         {
-#             'name': '用户管理',
-#             'icon': 'fas fa-user-shield',
-#             'models': [
-#                 {
-#                     'name': '学生列表',
-#                     'url': '/admin/login/students/'
-#                 },
-#                 {
-#                     'name': '管理员列表',
-#                     'icon': 'fa fa-user',
-#                     'url': 'auth/user/'
-#                 }]
-#         }]
-# }
+SIMPLEUI_CONFIG = {
+    'system_keep': True,
+    'menu_display': ['保修单管理', '通知管理', '用户管理'],
+    'dynamic': True,
+    'menus': [{
+        'name': '保修单管理',
+        'models': [{
+            'name': '保修单列表',
+            'url': '/admin/login/text/'
+        }]
+    }, {
+        'name': '通知管理',
+        'models': [{
+            'name': '通知列表',
+            'url': '/admin/index/notice/'
+        }]
+    },
+        {
+            'name': '用户管理',
+            'icon': 'fas fa-user-shield',
+            'models': [
+                {
+                    'name': '用户列表',
+                    'url': '/admin/index/user/'
+                },
+                {
+                    'name': '管理员列表',
+                    'icon': 'fa fa-user',
+                    'url': 'auth/user/'
+                }]
+        }]
+}
 # 隐藏右侧SimpleUI广告链接和使用分析
 SIMPLEUI_HOME_INFO = False
 SIMPLEUI_ANALYSIS = False
 # 默认主题
-SIMPLEUI_DEFAULT_THEME = 'admin.lte.css'
+# SIMPLEUI_DEFAULT_THEME = 'admin.lte.css'
 # admin logo
 SIMPLEUI_LOGO = '/static/img/logo.png'
