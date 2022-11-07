@@ -9,4 +9,5 @@ urlpatterns = [
     path('password_update/', views.password_update, name="password_update"),
     path('add_repair/', views.add_repair, name="add_repair"),
     path('record/', views.record, name="record"),
+    path('audit/<str:pk>', views.audit, name="audit"),
 ]

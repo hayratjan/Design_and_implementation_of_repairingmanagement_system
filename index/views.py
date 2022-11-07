@@ -28,7 +28,8 @@ def login(request):
             data = {"msg": "用户名或密码错误！"}
             return render(request, 'login.html', data)
         if user_:
-            request.session['name'] = {'name': user.name, "photo": str(user.photo), "type": user.type}
+            request.session['name'] = {'name': user.name, "photo": str(user.photo), "type": user.type,
+                                       "phone": user.phone}
             return HttpResponseRedirect('/')
         else:
             data = {"msg": "用户名或密码错误！"}
@@ -97,7 +98,7 @@ def add_repair(request):
         user = request.session['name']['name']
         user = User.objects.get(name=user)
         single = 'B' + datetime.now().strftime("%H%M%S")
-        print(single)
+
         Repair.objects.create(
             user=user,
             title=title,
@@ -119,8 +120,10 @@ def record(request):
     try:
         user = request.session.get('name')['name']
         # print(user)
-        record = Repair.objects.filter(user__name=user).order_by('-time')
-        print(record)
+        if request.session['name']['type'] != 1:
+            record = Repair.objects.all().order_by('-time')
+        else:
+            record = Repair.objects.filter(user__name=user).order_by('-time')
     except Exception as E:
         print(E)
     data = {"record": record}
@@ -133,3 +136,19 @@ def logout(request):
         # print('session  del....')
 
     return HttpResponseRedirect('/login/')
+
+
+def audit(request, pk):
+    audit = int(request.GET['audit'])
+    try:
+        repair = Repair.objects.get(pk=pk)
+
+    except Repair.DoesNotExist as E:
+        return HttpResponseRedirect('/record/')
+    if audit == 2:
+        repair.type = 3
+
+    else:
+        repair.type = 5
+    repair.save()
+    return HttpResponseRedirect('/record/')

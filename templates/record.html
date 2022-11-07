@@ -15,20 +15,82 @@
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
-                            <h5 class="card-title">{{ i.title }}</h5>
-                            <p class="card-text">内容：{{ i.content }}</p>
+                            <h5 class="card-title m-0">{{ i.title }}</h5>
+                            <p class="card-text m-0">内容：{{ i.content }}</p>
 
                             {% if i.type == 1 %}
-                                <p class="text-dark">状态：已提交</p>
-                            {% elif itype == 2 %}
-                                <p class="text-warning">状态：待审核</p>
-                            {% elif itype == 3 %}
-                                <p class="text-danger">状态：待修复</p>
-                            {% elif itype == 4 %}
-                                <p class="text-primary">状态：已修复</p>
+                                <p class="text-dark m-0">进度：已提交</p>
+{#                            {% elif i.type == 2 %}#}
+{#                                <p class="text-warning m-0">进度：待修复</p>#}
+                            {% elif i.type == 3 %}
+                                <p class="text-success m-0">进度：待修复</p>
+                            {% elif i.type == 4 %}
+                                <p class="text-primary m-0">进度：已修复</p>
+                            {% elif i.type == 5 %}
+                                <p class="text-danger m-0">进度：审核失败！</p>
                             {% endif %}
 
-                            <p class="card-text"><small class="text-muted">{{ i.time }}</small></p>
+                            <p class="m-0">手机号:{{ request.session.name.phone }}</p>
+                            <p class="card-text"><small class="text-muted m-0">{{ i.time }}</small></p>
+                            {% if request.session.name.type == 2 and i.type == 1 %}
+                                <!-- Button trigger modal -->
+                                <div class="text-end m-0">
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal2">
+                                        取消审核
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                        确认审核
+                                    </button>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">警告！</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                请确认取消吗？
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    关闭
+                                                </button>
+                                                <a type="button" class="btn btn-danger"
+                                                   href="{% url 'audit' i.id %}?audit=5">确认取消</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">警告！</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                请确认审核吗？
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    关闭
+                                                </button>
+                                                <a type="button" class="btn btn-primary"
+                                                   href="{% url 'audit' i.id %}?audit=2">确定</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

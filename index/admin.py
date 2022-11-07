@@ -22,5 +22,12 @@ class NoticeManager(admin.ModelAdmin):
     list_display = ['id', 'title', 'content', 'time', 'type']
 
 
+class RepairManager(admin.ModelAdmin):
+    list_display_links = ('id', 'single')
+    search_fields = ('id', 'user', 'single')
+    list_display = ['id', 'single', 'user', 'flor', 'type', 'title', 'time', 'admin_sample']
+
+
 admin.site.register(User, UserManager)
 admin.site.register(Notice, NoticeManager)
+admin.site.register(Repair, RepairManager)
